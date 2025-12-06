@@ -126,7 +126,7 @@ const Navbar = () => {
           {navItems}
         </nav>
         <a
-          href="https://drive.google.com/file/d/1P61zXG4Ryuh2Z445UwzTpP0Uljt0SvjY/view?usp=sharing"
+          href="https://drive.google.com/file/d/1dtjJHejP2jwqcsET0t2xJ8O8TtRHo03L/view?usp=sharing"
           target="_blank"
           rel="noreferrer"
           className="btn btn-warning w-[90%] mx-auto mt-4 text-black flex justify-center gap-2"
