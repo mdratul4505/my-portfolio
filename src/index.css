@@ -2,43 +2,131 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+:root {
+  --color-cyan: #00f0ff;
+  --color-orange: #ff5e00;
+  --bg-main: #050505;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
+  background-color: var(--bg-main);
+  color: #ffffff;
 }
 
-
-
-/* Bubble Animation Base */
-.bubble-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }
 
-.bubble {
+/* Gradient Text Utilities */
+.text-gradient-cyan {
+  background: linear-gradient(90deg, #00f0ff, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(90deg, #ff9900, #ff5e00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Neon Glows */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+.glow-cyan-hover:hover {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
+  border-color: rgba(0, 240, 255, 0.5);
+}
+
+/* Orbital Animations */
+.orbit-container {
   position: absolute;
-  bottom: -150px;
-  background: #84cc16;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  opacity: 0.15;
-  filter: blur(3px);
-  animation: floatUp 10s linear infinite;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }
 
-/* Bubble Floating Animation */
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(0.5);
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateY(-120vh) scale(1.4);
-    opacity: 0;
-  }
+@keyframes spin-right {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+@keyframes spin-left {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* This counter rotation is applied to icons so they don't spin upside down */
+@keyframes counter-spin-right {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes counter-spin-left {
+  from { transform: rotate(-360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.08);
+}
+
+.orbit-ring-1 {
+  width: 300px;
+  height: 300px;
+  animation: spin-right 20s linear infinite;
+}
+
+.orbit-ring-2 {
+  width: 480px;
+  height: 480px;
+  animation: spin-left 30s linear infinite;
+}
+
+.orbit-ring-3 {
+  width: 660px;
+  height: 660px;
+  animation: spin-right 40s linear infinite;
+}
+
+.orbit-icon {
+  position: absolute;
+  top: -24px; /* Move to edge */
+  left: 50%;
+  margin-left: -24px; /* Center horizontally relative to parent */
+  width: 48px;
+  height: 48px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  pointer-events: auto; /* Allow hover */
+}
+
+/* Apply specific counter animations to keep icons upright */
+.orbit-ring-1 .orbit-icon { animation: counter-spin-right 20s linear infinite; }
+.orbit-ring-2 .orbit-icon { animation: counter-spin-left 30s linear infinite; }
+.orbit-ring-3 .orbit-icon { animation: counter-spin-right 40s linear infinite; }
+
+/* Different positions for icons on the rings */
+.orbit-icon.pos-2 { top: auto; bottom: -24px; }
+.orbit-icon.pos-3 { top: 50%; left: -24px; margin-top: -24px; margin-left: 0; }
+.orbit-icon.pos-4 { top: 50%; left: auto; right: -24px; margin-top: -24px; margin-left: 0; }

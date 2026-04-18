@@ -1,6 +1,17 @@
 const projects = [
     {
         id: 1,
+        name:"Style Decor",
+        image:"https://i.ibb.co.com/rRgF4ryJ/Screenshot-2026-04-18-190457.png",
+        techStack:["React , Node.js, MongoDB, Firebase, Tailwind CSS , DaisyUi, JWT"],
+        description:"In this website, people can book different types of decoration services online. A credit card payment system has been integrated here. There are three roles: user, decorator, and admin. The admin can add decoration services. Users can book any decoration service, and after completing the payment, the decorator will provide that service.",
+        liveLink:"https://style-decor-client-sepia.vercel.app/",
+        githubClient:"https://github.com/mdratul4505/style-decor-client.git",
+        challenges:"protected rputer, JWT token, payment, CRUD with mongoDB",
+        futurePlans:"In the future, I want to build full-stack projects, create user-friendly websites, and explore new things.",
+    },
+    {
+        id: 2,
         name: "Artora",
         image: "https://i.ibb.co.com/dwDCv8Yr/Screenshot-2025-12-06-041234.png",
         techStack: ["React, Node.js, MongoDB, Firebase, Tailwind CSS, daisyUi"],
@@ -11,7 +22,7 @@ const projects = [
         futurePlans: "Real-time chat, Category-wise filter system and search implementation, ",
     },
     {
-        id: 2,
+        id: 3,
         name: "Skill swap",
         image: "https://i.ibb.co.com/mF4xCtJ9/Screenshot-2025-12-06-041334.png",
         techStack: ["React, Firebase Authentication, Tailwind CSS, DaisyUI"],

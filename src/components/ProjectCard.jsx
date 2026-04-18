@@ -5,44 +5,39 @@ import { FaArrowRight } from "react-icons/fa";
 const ProjectCard = ({ project }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.03 }}
-      transition={{ duration: 0.4 }}
-      className="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700 shadow-md group relative max-w-full"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+      className="bg-[#0a0a0a]/40 backdrop-blur-md rounded-xl overflow-hidden border border-zinc-800/50 shadow-lg group relative max-w-full hover:border-cyan-500/50 glow-cyan-hover transition-all duration-300"
     >
       {/* Image Section with Hover Button */}
-      <div className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-t-xl">
+      <div className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-t-xl border-b border-zinc-800">
         <img
           src={project.image}
           alt={project.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
         />
 
-        {/* Overlay Blur Effect */}
-        <div className="absolute inset-0 bg-opacity-20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-xl" />
+        {/* Overlay Dark Effect */}
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500" />
 
         {/* View Detail Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, rotate: -10 }}
-          animate={{ opacity: 1, y: 0, rotate: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2"
-        >
+        <div className="absolute inset-x-0 bottom-4 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2 translate-y-4 group-hover:translate-y-0">
           <Link
             to={`/projects/${project.id}`}
-            className="bg-lime-400 text-zinc-900 px-4 py-2 rounded-full font-semibold flex items-center gap-2 hover:shadow-[0_0_15px_#a3e635] transition text-xs sm:text-sm md:text-base"
+            className="bg-cyan-500/20 border border-cyan-500/50 backdrop-blur-md text-cyan-300 px-5 py-2 rounded-full font-medium flex items-center gap-2 hover:bg-cyan-500 hover:text-[#000] drop-shadow-[0_0_10px_rgba(0,240,255,0.3)] transition-all duration-300 text-xs sm:text-sm"
           >
             View Details <FaArrowRight />
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* Tech Stack */}
-      <div className="px-4 sm:px-5 py-3 sm:py-4">
-        <div className="flex flex-wrap gap-2 mb-3 sm:mb-4 justify-center">
+      <div className="px-5 py-6">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.techStack?.map((tech, idx) => (
             <span
               key={idx}
-              className="text-xs sm:text-sm md:text-base bg-zinc-700 text-lime-300 px-2 py-1 rounded-full hover:shadow-[0_0_10px_#84cc16] transition-all duration-300 truncate"
+              className="text-xs font-semibold tracking-wider uppercase text-cyan-400/80 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full truncate"
             >
               {tech}
             </span>
@@ -50,9 +45,11 @@ const ProjectCard = ({ project }) => {
         </div>
 
         {/* Project Title */}
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center truncate">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 truncate group-hover:text-cyan-300 transition-colors duration-300">
           {project.name}
         </h3>
+        {/* Subtle separator */}
+        <div className="h-0.5 w-12 bg-orange-500/50 mt-3 group-hover:w-24 transition-all duration-500"></div>
       </div>
     </motion.div>
   );
